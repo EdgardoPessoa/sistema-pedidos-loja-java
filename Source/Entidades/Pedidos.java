@@ -84,7 +84,7 @@ public class Pedidos {
 
         for (pedidosItems item : items){
             pedidos.append(item.getProduto().getNome())
-            .append(", ")
+            .append(", R$")
             .append(item.getPreco())
             .append(", ")
             .append("Quantidade: ").append(item.getQuantidade())
