@@ -8,28 +8,30 @@ Este programa em Java foi desenvolvido para simular um sistema de pedidos de uma
 
 ### Exemplo de Uso:
 ```
-Enter cliente data:
-Name: Alex Green
+Entre com os dados do cliente:
+Nome: Alex Green
 Email: alex@gmail.com
-Birth date (DD/MM/YYYY): 15/03/1985
-Enter order data:
-Status: PROCESSING
-How many items to this order? 2
-Enter #1 item data:
-Product name: TV
-Product price: 1000.00
-Quantity: 1
-Enter #2 item data:
-Product name: Mouse
-Product price: 40.00
-Quantity: 2
-ORDER SUMMARY:
-Order moment: 20/04/2018 11:25:09
-Order status: PROCESSING
-Client: Alex Green (15/03/1985) - alex@gmail.com
-Order items:
-TV, $1000.00, Quantity: 1, Subtotal: $1000.00
-Mouse, $40.00, Quantity: 2, Subtotal: $80.00
+Data de aniversario (DD/MM/YYYY): 15/03/1985
+
+Entre o status do pedido:
+Status: PROCESSANDO
+
+Quantos items para esse pedido: 2
+Entre os dados do pedido #1:
+Nome do produto: TV
+Preço do produto: 1000
+Quantidade: 1
+Entre os dados do pedido #2:
+Nome do produto: Mouse
+Preço do produto: 40
+Quantidade: 2
+Horario do pedido: 03/04/2024 13:24:28
+Status do pedido: PROCESSANDO
+Cliente: Alex Green (15/03/1985) alex@gmail.com
+Pedidos:
+Produto: TV, Preço: R$ 1000.00, Quantidade: 1, Subtotal: R$ 1000.0
+Produto: Mouse, Preço: R$ 40.00, Quantidade: 2, Subtotal: R$ 80.0
+Preço total: 1080.0
 ```
 
 Este programa oferece uma maneira simples de gerenciar pedidos de clientes e exibir um resumo claro e detalhado para referência.
