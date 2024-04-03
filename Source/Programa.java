@@ -18,7 +18,6 @@ public class Programa {
 
         try (Scanner scan = new Scanner(System.in)) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            SimpleDateFormat sdfHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
             System.out.println("Entre com os dados do cliente:");
             System.out.print("Nome: ");
