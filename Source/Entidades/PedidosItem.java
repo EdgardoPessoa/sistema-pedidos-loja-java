@@ -1,15 +1,11 @@
 package Source.Entidades;
 
-public class pedidosItems {
+public class PedidosItem {
     private Integer quantidade;
     private Double preco;
+    private Produto produto;
 
-    @SuppressWarnings("unused")
-    private pedidosItems(){}
-
-    private Produtos produto;
-
-    public pedidosItems(Integer quantidade, Double preco, Produtos produto) {
+    public PedidosItem(Integer quantidade, Double preco, Produto produto) {
         this.quantidade = quantidade;
         this.preco = preco;
         this.produto = produto;
@@ -23,7 +19,7 @@ public class pedidosItems {
         this.quantidade = quantidade;
     }
 
-    public Produtos getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 

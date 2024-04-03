@@ -1,6 +1,5 @@
 package Source.Entidades;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,90 +10,63 @@ import Source.Enums.pedidosStatus;
 public class Pedidos {
     private Date momento;
     private pedidosStatus status;
-
-    private Produtos produtos;
     private Cliente cliente;
-    private List<pedidosItems> items = new ArrayList<>();
+    private List<PedidosItem> itens;
 
-    @SuppressWarnings("unused")
-    private Pedidos(){}
-
-    public Pedidos(String dataHoraFormatada, pedidosStatus status, Cliente cliente) throws ParseException {
-        SimpleDateFormat sdfHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        this.momento = sdfHora.parse(dataHoraFormatada);
+    public Pedidos(pedidosStatus status, Cliente cliente) {
+        this.momento = new Date(); // Current time
         this.status = status;
         this.cliente = cliente;
+        this.itens = new ArrayList<>();
     }
 
     public Date getMomento() {
         return momento;
     }
 
-    public void setMomento(Date momento) {
-        this.momento = momento;
-    }
-
     public pedidosStatus getStatus() {
         return status;
     }
 
-    public void setStatus(pedidosStatus status) {
-        this.status = status;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public Produtos getProdutos() {
-        return produtos;
+    public List<PedidosItem> getItens() {
+        return new ArrayList<>(itens); // Return a copy of the list to prevent external modification
     }
 
-    public void setProdutos(Produtos produtos) {
-        this.produtos = produtos;
+    public void adicionarItem(PedidosItem item) {
+        itens.add(item);
     }
 
-    public List<pedidosItems> getItems() {
-        return items;
+    public void removerItem(PedidosItem item) {
+        itens.remove(item);
     }
 
-    // Metodos
-    
-    public void adicionarItems(pedidosItems item){
-        items.add(item);
-    }
-
-    public void removerItems(pedidosItems item){
-        items.remove(item);
-    }
-
-    public double total(){
+    public double total() {
         double total = 0.0;
-        for (pedidosItems item : items){
+        for (PedidosItem item : itens) {
             total += item.subTotal();
         }
         return total;
     }
 
-    public String toString(){
+    @Override
+    public String toString() {
         SimpleDateFormat sdfHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String momentoFormatado = sdfHora.format(momento);
-
-        StringBuilder pedidos = new StringBuilder();
-        pedidos.append("Horario do pedido: " + momentoFormatado +"\n");
-        pedidos.append("Status do pedido: " + status + "\n");
-        pedidos.append("Cliente: " + cliente + "\n");
-        pedidos.append("Pedidos: " + "\n");
-
-        for (pedidosItems item : items){
-            pedidos.append("Produto: ")
-            .append(item.getProduto().getNome())
-            .append(", Preço: ")
-            .append("R$ ")
-            .append(String.format("%.2f", item.getPreco()))
-            .append(", ")
-            .append("Quantidade: ").append(item.getQuantidade())
-            .append(", ")
-            .append("Subtotal: R$ ").append(item.subTotal())
-            .append("\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Horario do pedido: ").append(sdfHora.format(momento)).append("\n");
+        sb.append("Status do pedido: ").append(status).append("\n");
+        sb.append("Cliente: ").append(cliente).append("\n");
+        sb.append("Pedidos:\n");
+        for (PedidosItem item : itens) {
+            sb.append("Produto: ").append(item.getProduto().getNome()).append(", ");
+            sb.append("Preço: R$ ").append(String.format("%.2f", item.getPreco())).append(", ");
+            sb.append("Quantidade: ").append(item.getQuantidade()).append(", ");
+            sb.append("Subtotal: R$ ").append(item.subTotal()).append("\n");
         }
-        pedidos.append("Preço total: " + total());
-        return pedidos.toString();
-    }    
+        sb.append("Preço total: ").append(total());
+        return sb.toString();
+    }
 }

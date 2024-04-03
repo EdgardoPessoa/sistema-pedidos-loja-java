@@ -1,13 +1,10 @@
 package Source.Entidades;
 
-public class Produtos {
+public class Produto {
     private String nome;
     private Double preco;
 
-    @SuppressWarnings("unused")
-    private Produtos(){}
-    
-    public Produtos(String nome, Double preco) {
+    public Produto(String nome, Double preco) {
         this.nome = nome;
         this.preco = preco;
     }
@@ -27,6 +24,4 @@ public class Produtos {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-
-    
 }
