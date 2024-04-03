@@ -89,7 +89,7 @@ public class Pedidos {
             .append(", ")
             .append("Quantidade: ").append(item.getQuantidade())
             .append(", ")
-            .append("Subtotal: ").append(item.subTotal())
+            .append("Subtotal: R$").append(item.subTotal())
             .append("\n");
         }
         pedidos.append("Preço total: " + total());
