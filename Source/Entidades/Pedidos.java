@@ -67,7 +67,7 @@ public class Pedidos {
     public double total(){
         double total = 0.0;
         for (pedidosItems item : items){
-            total += item.getQuantidade() * item.getProduto().getPreco();
+            total += item.subTotal();
         }
         return total;
     }
@@ -83,13 +83,15 @@ public class Pedidos {
         pedidos.append("Pedidos: " + "\n");
 
         for (pedidosItems item : items){
-            pedidos.append(item.getProduto().getNome())
-            .append(", R$")
-            .append(item.getPreco())
+            pedidos.append("Produto: ")
+            .append(item.getProduto().getNome())
+            .append(", Preço: ")
+            .append("R$ ")
+            .append(String.format("%.2f", item.getPreco()))
             .append(", ")
             .append("Quantidade: ").append(item.getQuantidade())
             .append(", ")
-            .append("Subtotal: R$").append(item.subTotal())
+            .append("Subtotal: R$ ").append(item.subTotal())
             .append("\n");
         }
         pedidos.append("Preço total: " + total());
